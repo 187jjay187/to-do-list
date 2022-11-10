@@ -1,7 +1,24 @@
-.hello {
-    color: rgb(9, 9, 206);
-  }
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  body {
-    background-color: rgb(223, 195, 160);
+body {
+  background-color: rgb(246, 246, 246);
+}
+
+#toDoList {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  height: auto;
+  margin: 300px auto auto auto;
+  background-color: white;
+}
+
+::placeholder {
+  font-style: italic;
 }
