@@ -75,7 +75,7 @@ i {
   border: none;
 }
 
-/* Clear task button*/
+/* Clear task button */
 #btnClear {
   height: 50px;
   color: rgb(147, 147, 147);
@@ -114,7 +114,7 @@ i {
   text-decoration: none;
 }
 
-/* text checkbox*/
+/* text checkbox */
 input[type=checkbox]:checked + label {
   text-decoration: line-through;
 }
