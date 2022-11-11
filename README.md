@@ -5,6 +5,7 @@
 ## Recent Changes
 
 - added successful webpackage
+- added to do list structure
 
 ## Built With
 

@@ -3,9 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wbpack Exercise</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <title>Awesome To Do List</title>
 </head>
+
+<!-- body starts here -->
+
 <body>
-    <h1>Hello webpack!</h1>
+
+<!-- To do list starts here -->
+
+    <form id="toDoList" action="#" method="post">
+        <div class="title">
+            <h1 class="ttdl">Today's To Do List</h1>
+            <i class="fa fa-arrows-rotate icon"></i>
+        </div>
+        <div class="inputTask">
+        <input id="addTask" type="text" placeholder="Add to your to do list..." required>
+        <i class="fa fa-arrow-turn-down icon"></i>
+        </div>
+        <div class="toDoTasksContainer"></div>
+<!-- button clear starts here -->
+        <button id="btnClear" type="submit">Clear Completed Tasks</button>
+    </form>
+
+<!-- To do list ends here -->
+
+    <script src="../dist/main.js"></script>
+
+<!-- body ends here -->
+
 </body>
 </html>

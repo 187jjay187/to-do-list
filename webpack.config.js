@@ -9,12 +9,12 @@ module.exports = {
   mode: 'production',
   plugins: [
     new HtmlWebpackPlugin({
-        template: './src/index.html',
+      template: './src/index.html',
     }),
   ],
   output: {
     filename: '[name].js',
-    path: __dirname + '/build',
+    path: `${__dirname}/build`,
     clean: true,
   },
   module: {
