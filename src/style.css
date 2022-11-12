@@ -97,7 +97,7 @@ i {
   padding: 2px;
 }
 
-.edit-remove {
+.remove-edit {
   display: flex;
   justify-items: flex-end;
   margin-left: auto;
@@ -115,6 +115,7 @@ i {
   border-top: 1px solid gray;
   font-size: 18px;
   font-family: 'inter', sans-serif;
+  cursor: pointer;
 }
 
 /* task list base */
@@ -171,6 +172,16 @@ input:focus {
   border: none;
   font-family: 'inter', sans-serif;
   font-size: 15px;
+}
+
+.textcompleted {
+  text-decoration: line-through;
+  border: none;
+  font-size: 17px;
+  height: 45px;
+  width: 95%;
+  padding-left: 5px;
+  color: #9b9b9b;
 }
 
 /* edit button */
