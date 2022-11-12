@@ -13,19 +13,21 @@
 
 <!-- To do list starts here -->
 
-    <form id="toDoList" action="#" method="post">
+    <div id="toDoList">
         <div class="title">
             <h1 class="ttdl">Today's To Do List</h1>
             <i class="fa fa-arrows-rotate icon"></i>
         </div>
+        <form id="inputList" action="#" method="post">
         <div class="inputTask">
-        <input id="addTask" type="text" placeholder="Add to your to do list..." required>
-        <i class="fa fa-arrow-turn-down icon"></i>
+        <input id="addList" type="text" placeholder="Add to your to do list..." maxlength="80" required>
+        <button class="submiticon" type="submit"> <i class="fa fa-arrow-turn-down icon"></i> </button>
         </div>
-        <div class="toDoTasksContainer"></div>
+        </form>
+        <div class="toDoListContainer"></div>
 <!-- button clear starts here -->
         <button id="btnClear" type="submit">Clear Completed Tasks</button>
-    </form>
+    </div>
 
 <!-- To do list ends here -->
 
