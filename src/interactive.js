@@ -2,12 +2,13 @@ import MainMethod from './methods.js';
 
 export default class Interactive {
     static changeCompletedListCheck = (statusCheck, id) => {
-      const toDoLists = MainMethod.getToDoListFromLocalStorage();
+      const toDoLists = MainMethod.getToDoListFromStorage();
       toDoLists[id].completed = statusCheck;
       MainMethod.addListToStorage(toDoLists);
       MainMethod.showLists();
     }
 
+    // checkbox status
     static checkStatusEvent = () => (
       document.querySelectorAll('.checkbox').forEach((checkbox) => checkbox.addEventListener('change', () => {
         let statusCheck;
@@ -29,7 +30,7 @@ export default class Interactive {
     )
 
     static clearCompletedToDoLists = () => {
-      let toDoLists = MainMethod.getToDoListFromLocalStorage();
+      let toDoLists = MainMethod.getToDoListFromStorage();
 
       toDoLists = toDoLists.filter((item) => item.completed !== true);
       MainMethod.newIndexNum(toDoLists);

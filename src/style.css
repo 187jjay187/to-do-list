@@ -97,7 +97,7 @@ i {
   padding: 2px;
 }
 
-.edit-remove {
+.remove-edit {
   display: flex;
   justify-items: flex-end;
   margin-left: auto;

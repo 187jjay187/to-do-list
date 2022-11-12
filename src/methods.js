@@ -5,7 +5,7 @@ import DataList from './datalist.js';
 // get listed inputs from local storage
 
 export default class MainMethod {
-  static getToDoListFromLocalStorage = () => {
+  static getToDoListFromStorage = () => {
     let toDoLists;
 
     if (JSON.parse(localStorage.getItem('LocalDataList')) === null) {
@@ -31,7 +31,7 @@ export default class MainMethod {
 
   // delete from local storage
     static deleteListData = (id) => {
-      let toDoLists = this.getToDoListFromLocalStorage();
+      let toDoLists = this.getToDoListFromStorage();
       const ListItemToDelete = toDoLists[id];
 
       toDoLists = toDoLists.filter((item) => item !== ListItemToDelete);
@@ -41,7 +41,7 @@ export default class MainMethod {
     };
 
     static ListInputUpdate = (newDescription, id) => {
-      const toDoLists = this.getToDoListFromLocalStorage();
+      const toDoLists = this.getToDoListFromStorage();
       const updateList = toDoLists[id];
 
       toDoLists.forEach((item) => {
@@ -73,9 +73,9 @@ export default class MainMethod {
       const ul = document.createElement('ul');
       ul.className = 'to-do';
       ul.innerHTML = `
-        <li><input class="checkbox" id="CHECK${index}" type="checkbox"${statusCheck}></li> 
-        <li><input id="LIST${index}" type="text" class="text"${statusCompleted} value="${description}" readonly></li>
-        <li class="edit-remove">
+        <li><input class="checkbox" id="${index}" type="checkbox" ${statusCheck}></li> 
+        <li><input id="LIST${index}" type="text" class="text${statusCompleted}" value="${description}" readonly></li>
+        <li class="remove-edit">
         <button class="edit_list_btn" id="${index}"><i class="fa fa-ellipsis-v icon"></i></button>
         <button class="remove_btn" id="${index}"><i class="fa fa-trash-can icon"></i></button>
         </li>
@@ -85,7 +85,7 @@ export default class MainMethod {
 
     // show listed tasks
     static showLists = () => {
-      const toDoLists = this.getToDoListFromLocalStorage();
+      const toDoLists = this.getToDoListFromStorage();
       document.querySelector('.toDoListContainer').innerHTML = '';
       toDoLists.forEach((item) => {
         let statusCheck;
@@ -110,7 +110,7 @@ export default class MainMethod {
 
     // add a task to a list
     static addLists = (description) => {
-      const toDoLists = this.getToDoListFromLocalStorage();
+      const toDoLists = this.getToDoListFromStorage();
       const index = toDoLists.length + 1;
       const newtask = new DataList(description, false, index);
 
@@ -142,7 +142,7 @@ export default class MainMethod {
 
     // edit list
     static editListBtnEvent = () => {
-      let prevList = null;
+      let previousList = null;
       document.querySelectorAll('.edit_list_btn').forEach((button) => button.addEventListener('click', (event) => {
         event.preventDefault();
         const inputListId = 'LIST';
@@ -155,12 +155,12 @@ export default class MainMethod {
           listID = ListIdSelected;
         }
 
-        if (prevList !== null) {
-          prevList.getElementById(listID).removeAttribute('readonly');
+        if (previousList !== null) {
+          previousList.getElementById(listID).removeAttribute('readonly');
         }
 
         const listItem = event.target.closest('li');
-        prevList = listItem;
+        previousList = listItem;
         const ulItem = event.target.closest('ul');
 
         listItem.style.background = 'rgb(230, 230, 184)';
