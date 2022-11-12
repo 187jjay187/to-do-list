@@ -69,12 +69,12 @@ export default class MainMethod {
     };
 
     // section created dynamiclly
-    static toDoListsHtml = ({ description, index }) => {
+    static toDoListsHtml = ({ description, index }, statusCheck, statusCompleted) => {
       const ul = document.createElement('ul');
       ul.className = 'to-do';
       ul.innerHTML = `
-        <li><input class="checkbox" id="CHECK${index}" type="checkbox"></li> 
-        <li><input id="LIST${index}" type="text" class="text" value="${description}" readonly></li>
+        <li><input class="checkbox" id="CHECK${index}" type="checkbox"${statusCheck}></li> 
+        <li><input id="LIST${index}" type="text" class="text"${statusCompleted} value="${description}" readonly></li>
         <li class="edit-remove">
         <button class="edit_list_btn" id="${index}"><i class="fa fa-ellipsis-v icon"></i></button>
         <button class="remove_btn" id="${index}"><i class="fa fa-trash-can icon"></i></button>
@@ -83,16 +83,29 @@ export default class MainMethod {
       return ul;
     }
 
+    // show listed tasks
     static showLists = () => {
       const toDoLists = this.getToDoListFromLocalStorage();
       document.querySelector('.toDoListContainer').innerHTML = '';
       toDoLists.forEach((item) => {
-        document.querySelector('.toDoListContainer').appendChild(this.toDoListsHtml(item));
+        let statusCheck;
+        let statusCompleted;
+        if (item.completed === true) {
+          statusCheck = 'checked';
+          statusCompleted = 'completed';
+        } else {
+          statusCheck = '';
+          statusCompleted = '';
+        }
+        document.querySelector('.toDoListContainer').appendChild(this.toDoListsHtml(item, statusCheck, statusCompleted));
       });
 
       this.removeToDoListBtn();
       this.editListBtnEvent();
       this.updateListBtnEvent();
+
+      const event = new Event('listUpdated');
+      document.dispatchEvent(event);
     };
 
     // add a task to a list
@@ -129,6 +142,7 @@ export default class MainMethod {
 
     // edit list
     static editListBtnEvent = () => {
+      let prevList = null;
       document.querySelectorAll('.edit_list_btn').forEach((button) => button.addEventListener('click', (event) => {
         event.preventDefault();
         const inputListId = 'LIST';
@@ -141,7 +155,12 @@ export default class MainMethod {
           listID = ListIdSelected;
         }
 
+        if (prevList !== null) {
+          prevList.getElementById(listID).removeAttribute('readonly');
+        }
+
         const listItem = event.target.closest('li');
+        prevList = listItem;
         const ulItem = event.target.closest('ul');
 
         listItem.style.background = 'rgb(230, 230, 184)';
