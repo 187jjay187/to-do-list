@@ -14,10 +14,11 @@ body {
 #toDoList {
   display: flex;
   flex-direction: column;
-  width: 30%;
+  width: 40%;
   height: auto;
   margin: 300px auto auto auto;
   background-color: white;
+  box-shadow: 0 4px 20px 3px rgba(0, 0, 0, 0.137);
 }
 
 ::placeholder {
@@ -32,7 +33,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 10px;
+  padding-right: 23px;
   padding-left: 10px;
   height: 50px;
 }
@@ -40,7 +41,7 @@ body {
 /* h1 text */
 .ttdl {
   font-family: 'inter', sans-serif;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 100;
   font-style: normal;
   padding-top: 8px;
@@ -49,18 +50,35 @@ body {
 /* icon */
 i {
   color: gray;
+  cursor: all-scroll;
+  border: none;
+  background: none;
+  display: flex;
+  justify-content: flex-end;
 }
 
 /* task list base */
-.inputTask {
-  display: flex;
+#inputList {
   justify-content: space-between;
   align-items: center;
   background-color: #fff;
-  border-top: 1px solid gray;
   height: 50px;
   padding-right: 10px;
   padding-left: 10px;
+}
+
+.inputTask {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border-left: none;
+  border-bottom: none;
+  border-right: none;
+  border-top: 1px solid gray;
+  height: 50px;
+  padding: 0 10px;
 }
 
 /* refresh icon */
@@ -69,10 +87,22 @@ i {
 }
 
 /* input text  */
-#addTask {
+#addList {
   width: 100%;
   height: 45px;
   border: none;
+}
+
+.submiticon {
+  padding: 2px;
+}
+
+.edit-remove {
+  display: flex;
+  justify-items: flex-end;
+  margin-left: auto;
+  padding-right: 23px;
+  text-decoration: none;
 }
 
 /* Clear task button */
@@ -88,7 +118,7 @@ i {
 }
 
 /* task list base */
-.tasks {
+.list {
   background: #fff;
   display: flex;
   gap: 10px;
@@ -103,10 +133,11 @@ i {
 .tasks label {
   font-family: 'inter', sans-serif;
   padding-left: 10px;
+  width: 100%;
 }
 
 /* text */
-.tasks li:nth-child(2) {
+.lists li:nth-child(3) {
   display: flex;
   justify-items: flex-end;
   margin-left: auto;
@@ -130,4 +161,43 @@ input {
 /* text */
 input:focus {
   outline: none;
+}
+
+/* text */
+.text {
+  height: 45px;
+  width: 95%;
+  padding-left: 5px;
+  border: none;
+  font-family: 'inter', sans-serif;
+  font-size: 15px;
+}
+
+/* edit button */
+.edit_list_btn {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* remove button */
+.remove_btn {
+  cursor: pointer;
+  display: none;
+  border: none;
+  background: none;
+}
+
+.checkbox {
+  cursor: pointer;
+}
+
+.to-do {
+  background: #fff;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding-left: 10px;
+  list-style: none;
+  border-bottom: 0.01px solid #d3d3d3;
 }
